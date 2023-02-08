@@ -7,5 +7,25 @@
 export const moveZeros = (
   arr: (string | number | boolean | null | object | Array<[]>)[]
 ) => {
-  return false;
+  // creating a copy of input inorder to return a new array
+  // for in-place manipulation take reference of the original array
+  const output = arr.slice();
+  let i = 0, // zero ctr
+    j = 1; // non-zero ctr
+
+  while (j < output.length) {
+    if (output[i] === 0 && output[j] !== 0) {
+      output[i] = output[j];
+      output[j] = 0;
+      // since "i" becomes non-zero, incrementing it
+      i++;
+    }
+
+    // since "i" becomes non-zero, incrementing it
+    if (output[i] !== 0) {
+      i++;
+    }
+    j++;
+  }
+  return output;
 };
